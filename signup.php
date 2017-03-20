@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sign Up</title>
+	<title><?php echo $title;?></title>
 	<?php include_once('head.php'); ?>
 </head>
 <body>
@@ -130,38 +130,12 @@ if(isset($_POST['register'])){
 
 
 
-// using SendGrid's PHP Library
- //"https://github.com/sendgrid/sendgrid-php";
-// If you are using Composer (recommended)
-//require 'vendor/autoload.php';
-// If you are not using Composer
-require 'sendgrid-php.php';
-
-
-
-//$message = $temp;
-$message='Thank you for your registration! Please click on link  for activation! http://localhost:8012/HTML/verify.php?id='.$id.'&activation='.$activation.'';
-
-$from = new SendGrid\Email("Ante", "antecalin.ak@gmail.com");
-$subject = "Hi there.";
-$to = new SendGrid\Email("Example User", $mail);
-$content = new SendGrid\Content("text/plain", $message);
-$mail = new SendGrid\Mail($from, $subject, $to, $content);
-$apiKey = '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';
-$sg = new \SendGrid($apiKey);
-$response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
- 
- exit;?>
-
- <?php
 
 
 
 
-      //send email
+
+      //send emai
       /*$to = $_POST['email'];
       $subject = "Registration Confirmation";
       $body = "<p>Thank you for registering at site.</p>
